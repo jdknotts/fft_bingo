@@ -1,0 +1,77 @@
+Item,Tags,Center,Short
+"Jamey starts a statement with ""Again..."" ",Jamey,TRUE,"Jamey: ""Again..."""
+"Heath says ""fantastic""",Heath,TRUE,"Heath: ""fantastic"""
+"Dan says ""unbelievable""",Dan,TRUE,"Dan: ""unbelievable"""
+"Jamey says ""I'll give you an example""",Jamey,TRUE,"Jamey: ""I'll give you an example"""
+"Heath says ""Bingles""",Heath,FALSE,"Heath: ""Bingles"""
+Dan's clothing is criticized,Dan,FALSE,Dan's clothing criticized
+Schafer gets on the mic,,FALSE,Schafer on mic
+Adam trashes the giants,Adam,FALSE,Adam trashes Giants
+Dan trashes the giants,Dan,FALSE,Dan trashes Giants
+Heath trashes the giants,Heath,FALSE,Heath trashes Giants
+Heath trashes Daniel Jones,Heath,FALSE,Heath trashes Daniel Jones
+Adam defends Daniel Jones,Adam,FALSE,Adam defends Daniel Jones
+Adam trashes the Chiefs,"Adam, Heath",FALSE,Adam trashes Chiefs
+Heath defends the Chiefs,"Adam, Heath",FALSE,Heath defends Chiefs
+Heath trashes the Chiefs,Heath,FALSE,Heath trashes Chiefs
+Sandwiches or burgers are discussed,,FALSE,Sandwiches/burgers
+"Dan says ""standpoint""",Dan,TRUE,"Dan: ""standpoint"""
+Adam’s immune system is critiqued,,FALSE,Adam's immune critiqued
+Adam gets grilled for his commissioning,,FALSE,Adam grilled re: commissioning
+Spiderman meme is mentioned,,TRUE,Spiderman meme
+"Dan says, ""I will say this""",Dan,TRUE,"Dan: ""I will say this"""
+Someone asks for more likes on youtube,Sunday_morning,FALSE,Ask for YT likes
+Dan gets mad at someone who submitted a mailbag or fantasy cops question,"mailbag, Dan",FALSE,Dan mad at mailbag submitter
+Someone talks about a trade they made,season,FALSE,Trade talk
+Dave critiques Game of the Week execution,"Dave, Thursday OR Friday, season",FALSE,Dave critiques GOTW
+Adam sings,Adam,FALSE,Adam sings
+Dan laughs like the count,Dan,FALSE,Dan laughs like the Count
+Any discussion of music,,FALSE,Music discussed
+Someone's dog barks in the background,Jamey,FALSE,Dog barks
+Adam highlights a youtube comment that praises him,Adam,FALSE,YT comment praises Adam
+Someone highlights a youtube comment that mocks Adam,,FALSE,YT comment mocks Adam
+Adam plays the wrong soundbite,Adam,FALSE,Adam wrong soundbite
+Jamey mentions how late he stayed up last night,Jamey,FALSE,Jamey stayed up late
+Adam's clothing is critiqued,Adam,FALSE,Adam's clothing critiqued
+Someone talks about one of their matchups,season,TRUE,Matchup talk
+Adam and Dan's tennis rivalry is mentioned,,FALSE,Adam/Dan tennis rivalry
+ERIC soundbite is played,,TRUE,ERIC soundbite
+"Someone says, ""start em all, sit em all""","Thursday OR Friday, season",FALSE,"Someone: ""start em all, sit em all"""
+Dan agrees with Jamey,"Dan, Jamey",FALSE,Dan agrees w/ Jamey
+Adam brings up explosiveness,Adam,TRUE,Adam: explosiveness
+Someone gets mad about the guy they wanted getting taken in a mock draft,"draft, preseason",FALSE,Mad about mock draft pick
+A combine stat is mentioned,,FALSE,Combine stat
+Any mention that tight end is deep this year,preseason,TRUE,TE is deep
+Any mention that CMC is coming off a high usage season,,FALSE,CMC high usage
+Adam struggles to find a soundbite,Adam,FALSE,Adam struggles w/ soundbite
+Adam and Heath get mad at each other,"Adam, Heath",FALSE,Adam/Heath mad at each other
+Adam talks about Jahmyr Gibbs,"Adam, preseason",FALSE,Adam: Jahmyr Gibbs
+"Adam drops a trailing preposition (like saying ""pumped"" instead of ""pumped up"" or ""hang"" instead of ""hang out"") despite his war against dropping the ""up"" from ""washed up""","Adam, Heath",FALSE,Adam: trailing preposition
+Dave advocates for using a handcuff strategy,Dave,FALSE,Dave: handcuff strategy
+"Any mention of the ""friendship strategy""",,FALSE,Friendship strategy
+Any mention of best ball,,FALSE,Best ball
+Any mention of the green zone,,FALSE,Green zone
+Adam does Game of the Week,"Adam, Dave, Thursday OR Friday",TRUE,Adam does GOTW
+The PITT MAN music is played,,FALSE,PITT MAN music
+Jamey has a laughing fit,Jamey,FALSE,Jamey laughing fit
+Adam and Dan get mad at each other,"Adam, Dan",FALSE,Adam/Dan mad at each other
+Beyond the Box Score plug,,TRUE,Beyond the Box Score
+FFT Dynasty plug,,TRUE,FFT Dynasty plug
+Dan says he doesn't watch movies,Dan,FALSE,Dan doesn't watch movies
+Dan brings up New Jersey,Dan,FALSE,Dan: New Jersey
+"Jacob says, ""lets go""",Jacob,FALSE,"Jacob: ""lets go"""
+Jacob is silent for 2 straight minutes,Jacob,TRUE,Jacob silent 2 min
+"Dave says ""drop-o-meter"" like ""DROP-oh-mee-ter""",Monday,TRUE,"Dave: ""drop-o-meter"" like ""DROP-oh-mee-ter"""
+"Dave says ""drop-o-meter"" like ""druh-POM-uh-ter""",Monday,TRUE,"Dave: ""drop-o-meter"" like ""druh-POM-uh-ter"""
+Jamey curses to provoke Adam,"Jamey, Adam",FALSE,Jamey curses at Adam
+Dan hasn't seen a movie,Dan,FALSE,Dan hasn't seen a movie
+Dan says auctions are better than snake drafts,Dan,FALSE,Dan: auctions > snake
+Heath talks about Zay Flowers,Heath,FALSE,Heath: Zay Flowers
+Dave talks about Jaylen Waddle,Dave,FALSE,Dave: Jaylen Waddle
+Fantasy Cops music is played,mailbag,TRUE,Fantasy Cops music
+St. Jude plug,preseason,FALSE,St. Jude plug
+Dan talks about golf,Dan,FALSE,Dan: golf
+Jeremiyah Love soundbite is played,,FALSE,Jeremiyah Love soundbite
+Any discussion of movies,,TRUE,Movies discussed
+Heath mentions his projections,Heath,TRUE,Heath: projections
+Any mention that quarterback is deep this year,,FALSE,QB is deep

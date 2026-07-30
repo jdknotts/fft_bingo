@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FFT Bingo</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>FFT Bingo</h1>
+      <p class="subtitle">Fantasy Football Today — live episode bingo</p>
+    </header>
+
+    <section class="controls">
+      <fieldset>
+        <legend>Hosts</legend>
+        <div class="checkbox-group" id="hosts-group">
+          <label><input type="checkbox" name="host" value="Adam" checked> Adam</label>
+          <label><input type="checkbox" name="host" value="Dan"> Dan</label>
+          <label><input type="checkbox" name="host" value="Heath"> Heath</label>
+          <label><input type="checkbox" name="host" value="Jamey"> Jamey</label>
+          <label><input type="checkbox" name="host" value="Dave"> Dave</label>
+          <label><input type="checkbox" name="host" value="Jacob"> Jacob</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Miscellaneous</legend>
+        <div class="checkbox-group" id="misc-group">
+          <label><input type="checkbox" name="misc" value="mailbag"> Mailbag</label>
+          <label><input type="checkbox" name="misc" value="draft"> Mock Draft</label>
+        </div>
+      </fieldset>
+
+      <button type="button" id="generate-btn" class="primary-btn">Generate Grid</button>
+      <p id="status-msg" class="status-msg" aria-live="polite"></p>
+    </section>
+
+    <section class="game" id="game-section" hidden>
+      <div class="grid" id="bingo-grid" role="grid" aria-label="Bingo grid"></div>
+
+      <button type="button" id="confirm-btn" class="confirm-btn" disabled>CONFIRM BINGO!?</button>
+
+      <div id="victory-section" class="victory-section" hidden>
+        <p id="victory-message" class="victory-message"></p>
+        <button type="button" id="copy-btn" class="secondary-btn">Copy to share your victory in the YouTube chat!</button>
+        <span id="copy-feedback" class="copy-feedback" aria-live="polite"></span>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
