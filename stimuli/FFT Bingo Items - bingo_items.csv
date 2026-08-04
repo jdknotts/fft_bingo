@@ -25,24 +25,22 @@ Someone talks about a trade they made,season,FALSE,Trade talk
 Dave critiques Game of the Week execution,"Dave, Thursday OR Friday, season",FALSE,Dave critiques GOTW
 Adam sings,Adam,FALSE,Adam sings
 Dan laughs like The Count,Dan,FALSE,Dan laughs like the Count
-Any discussion of music,,FALSE,Music discussed
 Someone's dog barks in the background,Jamey,FALSE,Dog barks
-Adam highlights a youtube comment that praises him,Adam,FALSE,YT comment praises Adam
+Adam highlights an email or youtube comment that praises him,Adam,FALSE,Adam highlights flattering message
 Someone highlights a youtube comment that mocks Adam,,FALSE,YT comment mocks Adam
-Adam plays the wrong soundbite,Adam,FALSE,Adam wrong soundbite
 Someone talks about one of their matchups,season,TRUE,Matchup talk
 Adam and Dan's tennis rivalry is mentioned,,FALSE,Adam/Dan tennis rivalry
 The ERIC soundbite is played,,TRUE,ERIC soundbite
 "Someone says, ""start em all, sit em all""","Thursday OR Friday, season",FALSE,"Someone: ""start em all, sit em all"""
 Dan agrees with Jamey,"Dan, Jamey",TRUE,Dan agrees w/ Jamey
-Adam brings up explosiveness,Adam,TRUE,Adam: explosiveness
+Adam talks about explosiveness,Adam,TRUE,Adam talks about explosiveness
 Someone gets mad about the guy they wanted getting taken in a mock draft,"draft, preseason",FALSE,Mad about mock draft pick
 A combine stat is mentioned,,FALSE,Combine stat
 Any mention that tight end is deep this year,preseason,TRUE,TE is deep
 Any mention that CMC is coming off a high usage season,,FALSE,CMC high usage
-Adam struggles to find a soundbite,Adam,FALSE,Adam struggles w/ soundbite
+Adam struggles with a soundbite,Adam,FALSE,Adam struggles w/ soundbite
 Adam and Heath get mad at each other,"Adam, Heath",FALSE,Adam/Heath mad at each other
-Adam says Jahmyr Gibbs will be incredible this year,"Adam, preseason",FALSE,Adam: Jahmyr Gibbs
+Adam says Jahmyr Gibbs will be incredible this year,"Adam, preseason",FALSE,Adam steams up Jahmyr Gibbs
 "Adam drops a trailing preposition (like saying ""pumped"" instead of ""pumped up"" or ""hang"" instead of ""hang out"") despite his war against dropping the ""up"" from ""washed up""","Adam, Heath",FALSE,Adam: trailing preposition
 Dave advocates for using a handcuff strategy,Dave,FALSE,Dave: handcuff strategy
 "Any mention of the ""friendship strategy""",,FALSE,Friendship strategy
@@ -55,7 +53,6 @@ Adam and Dan get mad at each other,"Adam, Dan",FALSE,Adam/Dan mad at each other
 Beyond the Box Score Podcast plug,,TRUE,Beyond the Box Score
 FFT Dynasty Podcast plug,,TRUE,FFT Dynasty plug
 Dan says he doesn't watch movies,Dan,FALSE,Dan doesn't watch movies
-Dan brings up New Jersey,Dan,FALSE,Dan: New Jersey
 "Jacob says, ""lets go""",Jacob,FALSE,"Jacob: ""lets go"""
 Jacob is silent for 2 straight minutes,Jacob,TRUE,Jacob silent 2 min
 "Dave says ""drop-o-meter"" like ""DROP-oh-mee-ter""",Monday,TRUE,"""DROP-oh-mee-ter"""
@@ -66,7 +63,7 @@ Dan says auctions are better than snake drafts,Dan,FALSE,Dan: auctions > snake
 Heath talks about Zay Flowers,Heath,FALSE,Heath: Zay Flowers
 Dave talks about Jaylen Waddle,Dave,FALSE,Dave: Jaylen Waddle
 Fantasy Cops music is played,mailbag,TRUE,Fantasy Cops music
-Draftathon plug,preseason,FALSE,Draftathon plug
+FFT Open plug,preseason,FALSE,FFT Open plug
 Dan talks about golf,Dan,FALSE,Dan: golf
 Jeremiyah Love soundbite is played,,FALSE,Jeremiyah Love soundbite
 Any discussion of movies,,TRUE,Movies discussed
@@ -75,7 +72,10 @@ Any mention that quarterback is deep this year,preseason,FALSE,QB is deep
 An Aizer stat is applied,,TRUE,Aizer stat
 Adam gets razzed for his handcuff auction strategy,,FALSE,Adam's auction handcuff strategy
 Draftathon plug,preseason,FALSE,Draftathon
-"Any mention of the wide receiver ""Blob""",preseason,TRUE,"""The Blob"""
+"Any mention of the wide receiver ""Blob""",preseason,FALSE,"""The Blob"""
 "Someone says ""dart throw""",,FALSE,"""dart throw"""
 Adam gets razzed for Aizer statting,,FALSE,Adam razzed for Aizer statting
 Travis Etienne's name gets pronounced the old way,,FALSE,Etienne pronounced old way
+"The meaning of ""sleeper"" vs ""breakout"" is debated",preseason,FALSE,"""sleeper"" vs ""breakout"" debate"
+"Rocket ship emoji or ""to the moon"" is invoked to describe a player with a new opportunity",,FALSE,"rocket ship emoji or ""to the moon"""
+Someone does a Dan impression,,FALSE,Dan impression

@@ -114,12 +114,18 @@ button:disabled {
   margin-bottom: 0.6rem;
 }
 
-.grid {
+.grid-main {
   flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
-  min-width: 0;
 }
 
 .instant-win-column {
@@ -198,16 +204,16 @@ button:disabled {
   padding: 0.5rem;
 }
 
-.share-section {
-  margin-top: 0.6rem;
+.share-area {
+  margin-top: 0.25rem;
   padding-top: 0.55rem;
   border-top: 1px solid #333;
 }
 
-.share-prompt {
-  margin: 0 0 0.4rem;
-  font-size: 0.85rem;
-  color: #ddd;
+.share-block + .share-block {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid #333;
 }
 
 .share-message {
@@ -221,9 +227,10 @@ button:disabled {
   color: #ddd;
 }
 
-.secondary-btn {
+.copy-btn {
   width: 100%;
   font-size: 0.82rem;
+  text-align: left;
 }
 
 .copy-feedback {

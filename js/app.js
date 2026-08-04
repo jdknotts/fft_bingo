@@ -12,6 +12,7 @@ const gameSection = document.getElementById('game-section');
 const gridEl = document.getElementById('bingo-grid');
 const instantWinCell = document.getElementById('instant-win-cell');
 const confirmBtn = document.getElementById('confirm-btn');
+const shareArea = document.getElementById('share-area');
 const victorySection = document.getElementById('victory-section');
 const victoryMessage = document.getElementById('victory-message');
 const copyBtn = document.getElementById('copy-btn');
@@ -62,8 +63,14 @@ function getMiscFlags() {
   };
 }
 
+function updateShareAreaVisibility() {
+  const anyVisible = !victorySection.hidden || !instantWinSection.hidden;
+  shareArea.hidden = !anyVisible;
+}
+
 function handleGenerate() {
   statusMsg.textContent = '';
+  shareArea.hidden = true;
   victorySection.hidden = true;
   instantWinSection.hidden = true;
   copyFeedback.textContent = '';
@@ -121,9 +128,9 @@ function renderBoard() {
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      fitCells(cells, { minPx: 8, maxPx: 26 });
+      fitCells(cells, { minPx: 8, maxPx: 26, fontScale: 0.75 });
       sizeInstantWinCell(instantWinCell, gridEl);
-      fitTextToCell(instantWinCell, currentInstantWin, { minPx: 7, maxPx: 16 });
+      fitTextToCell(instantWinCell, currentInstantWin, { minPx: 8, maxPx: 22 });
     });
   });
 }
@@ -141,6 +148,7 @@ function toggleCell(index, cell) {
     activeLine = null;
     confirmBtn.disabled = true;
     victorySection.hidden = true;
+    updateShareAreaVisibility();
   }
 }
 
@@ -149,11 +157,13 @@ function handleInstantWinClick() {
   instantWinCell.setAttribute('aria-pressed', String(isMarked));
 
   if (isMarked) {
-    instantWinMessage.textContent = `INSTANT WIN: ${currentInstantWin}`;
+    instantWinMessage.textContent = `INSTANT WIN!!: ${currentInstantWin}`;
     instantWinSection.hidden = false;
     instantWinCopyFeedback.textContent = '';
+    updateShareAreaVisibility();
   } else {
     instantWinSection.hidden = true;
+    updateShareAreaVisibility();
   }
 }
 
@@ -164,6 +174,7 @@ function handleConfirm() {
   victoryMessage.textContent = formatVictoryMessage(winningItems);
   victorySection.hidden = false;
   copyFeedback.textContent = '';
+  updateShareAreaVisibility();
 }
 
 async function handleCopy(messageEl, feedbackEl) {

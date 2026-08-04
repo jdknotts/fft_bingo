@@ -41,7 +41,10 @@
 
     <section class="game" id="game-section" hidden>
       <div class="board">
-        <div class="grid" id="bingo-grid" role="grid" aria-label="Bingo grid"></div>
+        <div class="grid-main">
+          <div class="grid" id="bingo-grid" role="grid" aria-label="Bingo grid"></div>
+          <button type="button" id="confirm-btn" class="confirm-btn" disabled>CONFIRM BINGO!?</button>
+        </div>
 
         <div class="instant-win-column">
           <span class="instant-win-label">INSTANT WIN!!</span>
@@ -49,19 +52,18 @@
         </div>
       </div>
 
-      <button type="button" id="confirm-btn" class="confirm-btn" disabled>CONFIRM BINGO!?</button>
+      <div class="share-area" id="share-area" hidden>
+        <div id="victory-section" class="share-block" hidden>
+          <p id="victory-message" class="share-message"></p>
+          <button type="button" id="copy-btn" class="secondary-btn copy-btn">⧉ Click to copy victory text to share in YouTube chat.</button>
+          <span id="copy-feedback" class="copy-feedback" aria-live="polite"></span>
+        </div>
 
-      <div id="instant-win-section" class="share-section" hidden>
-        <p class="share-prompt">Share your instant win with the group chat!</p>
-        <p id="instant-win-message" class="share-message"></p>
-        <button type="button" id="instant-win-copy-btn" class="secondary-btn">Copy instant win message</button>
-        <span id="instant-win-copy-feedback" class="copy-feedback" aria-live="polite"></span>
-      </div>
-
-      <div id="victory-section" class="share-section" hidden>
-        <p id="victory-message" class="share-message"></p>
-        <button type="button" id="copy-btn" class="secondary-btn">Copy to share your victory in the YouTube chat!</button>
-        <span id="copy-feedback" class="copy-feedback" aria-live="polite"></span>
+        <div id="instant-win-section" class="share-block" hidden>
+          <p id="instant-win-message" class="share-message"></p>
+          <button type="button" id="instant-win-copy-btn" class="secondary-btn copy-btn">⧉ Click to copy victory text to share in YouTube chat.</button>
+          <span id="instant-win-copy-feedback" class="copy-feedback" aria-live="polite"></span>
+        </div>
       </div>
     </section>
 

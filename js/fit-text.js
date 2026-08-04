@@ -1,4 +1,4 @@
-export function fitTextToCell(cell, text, { minPx = 8, maxPx = 28 } = {}) {
+export function fitTextToCell(cell, text, { minPx = 8, maxPx = 28, fontScale = 1 } = {}) {
   let textEl = cell.querySelector('.cell-text');
   if (!textEl) {
     textEl = document.createElement('span');
@@ -30,7 +30,8 @@ export function fitTextToCell(cell, text, { minPx = 8, maxPx = 28 } = {}) {
     }
   }
 
-  textEl.style.fontSize = `${best}px`;
+  const scaled = Math.max(minPx, Math.round(best * fontScale));
+  textEl.style.fontSize = `${scaled}px`;
 }
 
 export function fitCells(cells, options) {
@@ -39,11 +40,11 @@ export function fitCells(cells, options) {
   });
 }
 
-export function sizeInstantWinCell(instantWinCell, gridEl, { scale = 0.72 } = {}) {
+export function sizeInstantWinCell(instantWinCell, gridEl) {
   const sampleCell = gridEl.querySelector('.cell');
   if (!sampleCell) return;
 
-  const cellSize = sampleCell.getBoundingClientRect().width * scale;
+  const cellSize = sampleCell.getBoundingClientRect().width;
   instantWinCell.style.width = `${cellSize}px`;
   instantWinCell.style.height = `${cellSize}px`;
 }
