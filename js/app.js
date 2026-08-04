@@ -1,4 +1,6 @@
-import { loadItems } from './csv.js';
+import { initSuggest } from './suggest.js';
+import { loadInstantWinItems, loadItems } from './csv.js';
+import { fitCells, fitTextToCell } from './fit-text.js';
 import { buildContext, filterEligibleItems } from './filters.js';
 import { findCompletedLines, formatVictoryMessage, generateGrid } from './grid.js';
 
@@ -8,14 +10,21 @@ const generateBtn = document.getElementById('generate-btn');
 const statusMsg = document.getElementById('status-msg');
 const gameSection = document.getElementById('game-section');
 const gridEl = document.getElementById('bingo-grid');
+const instantWinCell = document.getElementById('instant-win-cell');
 const confirmBtn = document.getElementById('confirm-btn');
 const victorySection = document.getElementById('victory-section');
 const victoryMessage = document.getElementById('victory-message');
 const copyBtn = document.getElementById('copy-btn');
 const copyFeedback = document.getElementById('copy-feedback');
+const instantWinSection = document.getElementById('instant-win-section');
+const instantWinMessage = document.getElementById('instant-win-message');
+const instantWinCopyBtn = document.getElementById('instant-win-copy-btn');
+const instantWinCopyFeedback = document.getElementById('instant-win-copy-feedback');
 
 let allItems = [];
+let instantWinItems = [];
 let currentGrid = [];
+let currentInstantWin = '';
 let marked = Array(9).fill(false);
 let activeLine = null;
 
@@ -23,10 +32,18 @@ init();
 
 async function init() {
   try {
-    allItems = await loadItems();
+    [allItems, instantWinItems] = await Promise.all([
+      loadItems(),
+      loadInstantWinItems(),
+    ]);
     generateBtn.addEventListener('click', handleGenerate);
     confirmBtn.addEventListener('click', handleConfirm);
-    copyBtn.addEventListener('click', handleCopy);
+    copyBtn.addEventListener('click', () => handleCopy(victoryMessage, copyFeedback));
+    instantWinCopyBtn.addEventListener('click', () => handleCopy(instantWinMessage, instantWinCopyFeedback));
+    victoryMessage.addEventListener('click', () => handleCopy(victoryMessage, copyFeedback));
+    instantWinMessage.addEventListener('click', () => handleCopy(instantWinMessage, instantWinCopyFeedback));
+    instantWinCell.addEventListener('click', handleInstantWinClick);
+    initSuggest();
   } catch (error) {
     statusMsg.textContent = error.message;
     generateBtn.disabled = true;
@@ -48,7 +65,9 @@ function getMiscFlags() {
 function handleGenerate() {
   statusMsg.textContent = '';
   victorySection.hidden = true;
+  instantWinSection.hidden = true;
   copyFeedback.textContent = '';
+  instantWinCopyFeedback.textContent = '';
   activeLine = null;
   marked = Array(9).fill(false);
   confirmBtn.disabled = true;
@@ -62,28 +81,47 @@ function handleGenerate() {
 
   try {
     currentGrid = generateGrid(eligible);
+    currentInstantWin = pickInstantWin();
   } catch (error) {
     statusMsg.textContent = error.message;
     gameSection.hidden = true;
     return;
   }
 
-  renderGrid();
+  renderBoard();
   gameSection.hidden = false;
 }
 
-function renderGrid() {
+function pickInstantWin() {
+  if (instantWinItems.length === 0) {
+    throw new Error('No instant win items available.');
+  }
+  return instantWinItems[Math.floor(Math.random() * instantWinItems.length)];
+}
+
+function renderBoard() {
   gridEl.innerHTML = '';
+  const cells = [];
 
   currentGrid.forEach((item, index) => {
     const cell = document.createElement('button');
     cell.type = 'button';
     cell.className = 'cell';
-    cell.textContent = item.item;
+    cell.dataset.text = item.item;
     cell.setAttribute('role', 'gridcell');
     cell.setAttribute('aria-pressed', 'false');
     cell.addEventListener('click', () => toggleCell(index, cell));
     gridEl.appendChild(cell);
+    cells.push(cell);
+  });
+
+  instantWinCell.classList.remove('instant-win-marked');
+  instantWinCell.setAttribute('aria-pressed', 'false');
+  instantWinCell.dataset.text = currentInstantWin;
+
+  fitCells(cells, { minPx: 7, maxPx: 14 });
+  requestAnimationFrame(() => {
+    fitTextToCell(instantWinCell, currentInstantWin, { minPx: 6, maxPx: 11 });
   });
 }
 
@@ -103,6 +141,19 @@ function toggleCell(index, cell) {
   }
 }
 
+function handleInstantWinClick() {
+  const isMarked = instantWinCell.classList.toggle('instant-win-marked');
+  instantWinCell.setAttribute('aria-pressed', String(isMarked));
+
+  if (isMarked) {
+    instantWinMessage.textContent = `INSTANT WIN: ${currentInstantWin}`;
+    instantWinSection.hidden = false;
+    instantWinCopyFeedback.textContent = '';
+  } else {
+    instantWinSection.hidden = true;
+  }
+}
+
 function handleConfirm() {
   if (!activeLine) return;
 
@@ -112,14 +163,14 @@ function handleConfirm() {
   copyFeedback.textContent = '';
 }
 
-async function handleCopy() {
-  const text = victoryMessage.textContent;
+async function handleCopy(messageEl, feedbackEl) {
+  const text = messageEl.textContent;
   if (!text) return;
 
   try {
     await navigator.clipboard.writeText(text);
-    copyFeedback.textContent = 'Copied!';
+    feedbackEl.textContent = 'Copied!';
   } catch {
-    copyFeedback.textContent = 'Copy failed — select and copy manually.';
+    feedbackEl.textContent = 'Copy failed — select and copy manually.';
   }
 }

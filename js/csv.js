@@ -1,14 +1,53 @@
-export async function loadItems(url = 'stimuli/bingo_items.csv') {
+const BINGO_ITEMS_URL = 'stimuli/FFT Bingo Items - bingo_items.csv';
+const INSTANT_WIN_URL = 'stimuli/FFT Bingo Items - instant_win.csv';
+
+export async function loadItems(url = BINGO_ITEMS_URL) {
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Could not load bingo items (${response.status}).`);
   }
 
   const text = await response.text();
-  return parseCsv(text);
+  return parseBingoCsv(text);
 }
 
-function parseCsv(text) {
+export async function loadInstantWinItems(url = INSTANT_WIN_URL) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Could not load instant win items (${response.status}).`);
+  }
+
+  const text = await response.text();
+  return parseSingleColumnCsv(text);
+}
+
+function parseBingoCsv(text) {
+  const rows = parseCsvRows(text);
+  const [header, ...dataRows] = rows;
+  const columns = header.map((name) => name.trim());
+
+  return dataRows.map((cells) => {
+    const record = {};
+    columns.forEach((name, index) => {
+      record[name.toLowerCase()] = (cells[index] ?? '').trim();
+    });
+
+    return {
+      item: record.item ?? '',
+      tags: record.tags ?? '',
+      center: (record.center ?? '').toUpperCase() === 'TRUE',
+      short: record.short ?? record.item ?? '',
+    };
+  });
+}
+
+function parseSingleColumnCsv(text) {
+  return parseCsvRows(text)
+    .map((row) => (row[0] ?? '').trim())
+    .filter(Boolean);
+}
+
+function parseCsvRows(text) {
   const rows = [];
   let row = [];
   let field = '';
@@ -53,20 +92,5 @@ function parseCsv(text) {
     rows.push(row);
   }
 
-  const [header, ...dataRows] = rows;
-  const columns = header.map((name) => name.trim());
-
-  return dataRows.map((cells) => {
-    const record = {};
-    columns.forEach((name, index) => {
-      record[name.toLowerCase()] = (cells[index] ?? '').trim();
-    });
-
-    return {
-      item: record.item ?? '',
-      tags: record.tags ?? '',
-      center: (record.center ?? '').toUpperCase() === 'TRUE',
-      short: record.short ?? record.item ?? '',
-    };
-  });
+  return rows;
 }

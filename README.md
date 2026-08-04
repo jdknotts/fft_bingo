@@ -12,14 +12,14 @@ A simple live bingo game for Fantasy Football Today YouTube episodes.
 
 ## Bingo items
 
-Items live in `stimuli/bingo_items.csv` with columns:
+Items live in `stimuli/FFT Bingo Items - bingo_items.csv` with columns:
 
 - **Item** — full text shown on the grid
 - **Tags** — filtering rules (hosts, mailbag, draft, season/preseason, day-of-week, etc.)
 - **Center** — whether the item can be placed in the free center square
-- **Short** — abbreviated text used in the victory share string (edit as needed)
+- **Short** — abbreviated text used in the victory share string (add manually when adding items)
 
-The original source file is kept at `stimuli/FFT Bingo Items - bingo_items.csv`.
+Rare instant-win items live in `stimuli/FFT Bingo Items - instant_win.csv` (single column, no header).
 
 ## Tag rules
 
@@ -47,6 +47,25 @@ Open http://localhost:8000
 2. **Settings → Pages → Deploy from branch → main / (root)**.
 3. Site URL: `https://YOUR_USERNAME.github.io/fft_bingo/`
 
+## Suggest a bingo item (Google Forms)
+
+The page includes a suggestion box at the bottom that posts to a Google Form.
+
+### One-time setup
+
+1. Go to [Google Forms](https://forms.google.com) and create a new form.
+2. Add one question: **Suggest a bingo item** (Short answer is fine).
+3. Click **Send** → link icon → copy the form URL. It looks like:
+   `https://docs.google.com/forms/d/e/1FAIpQLSf.../viewform`
+4. Open `js/google-form-config.js` and set:
+   - **actionUrl** — same URL but replace `viewform` with `formResponse`
+   - **entryField** — from the form editor: ⋮ → **Get pre-filled link** → type `test` in the question → copy the URL. Find the parameter like `entry.1234567890=test` and use `entry.1234567890` as the field name.
+5. Push the config change to GitHub.
+
+Submissions appear in the form’s **Responses** tab (view in Forms or link a Google Sheet).
+
+Until those values are filled in, the suggestion box shows “not configured yet” and stays disabled.
+
 ## File layout
 
 ```
@@ -56,5 +75,8 @@ js/app.js
 js/csv.js
 js/filters.js
 js/grid.js
-stimuli/bingo_items.csv
+js/suggest.js
+js/google-form-config.js
+stimuli/FFT Bingo Items - bingo_items.csv
+stimuli/FFT Bingo Items - instant_win.csv
 ```
