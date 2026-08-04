@@ -26,14 +26,9 @@ header {
 
 h1 {
   margin: 0;
-  font-size: 1.35rem;
-  font-weight: 700;
-}
-
-.subtitle {
-  margin: 0.1rem 0 0;
-  color: #bbb;
-  font-size: 0.75rem;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
 }
 
 .control-row {
@@ -130,19 +125,21 @@ button:disabled {
 .instant-win-column {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 26%;
   min-width: 72px;
   max-width: 110px;
 }
 
 .instant-win-label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #ccc;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ff00ff;
   text-align: center;
-  margin-bottom: 0.25rem;
-  line-height: 1.2;
+  margin-bottom: 0.35rem;
+  line-height: 1.15;
 }
 
 .cell {
@@ -150,23 +147,30 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.3rem;
+  padding: 0.25rem;
   border: 1px solid #555;
   background: #111;
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.15;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+}
+
+.cell-text {
+  display: block;
+  width: 100%;
+  max-height: 100%;
   hyphens: none;
   word-break: normal;
   overflow-wrap: normal;
 }
 
 .instant-win-cell {
-  flex: 1;
-  width: 100%;
-  aspect-ratio: auto;
+  flex: 0 0 auto;
+  aspect-ratio: 1;
 }
 
 .cell:hover {
@@ -174,15 +178,15 @@ button:disabled {
 }
 
 .cell.marked {
-  background: #ff00ff;
-  color: #fff;
-  border-color: #ff00ff;
-}
-
-.instant-win-cell.instant-win-marked {
   background: #ff8800;
   color: #000;
   border-color: #ff8800;
+}
+
+.instant-win-cell.instant-win-marked {
+  background: #ff00ff;
+  color: #000;
+  border-color: #ff00ff;
 }
 
 .confirm-btn {
@@ -291,6 +295,10 @@ button:disabled {
 }
 
 @media (max-width: 380px) {
+  h1 {
+    font-size: 1.85rem;
+  }
+
   .control-row {
     grid-template-columns: 1fr;
   }
@@ -298,5 +306,9 @@ button:disabled {
   .instant-win-column {
     width: 22%;
     min-width: 62px;
+  }
+
+  .instant-win-label {
+    font-size: 0.8rem;
   }
 }

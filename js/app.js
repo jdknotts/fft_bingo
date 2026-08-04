@@ -1,6 +1,6 @@
 import { initSuggest } from './suggest.js';
 import { loadInstantWinItems, loadItems } from './csv.js';
-import { fitCells, fitTextToCell } from './fit-text.js';
+import { fitCells, fitTextToCell, sizeInstantWinCell } from './fit-text.js';
 import { buildContext, filterEligibleItems } from './filters.js';
 import { findCompletedLines, formatVictoryMessage, generateGrid } from './grid.js';
 
@@ -119,9 +119,12 @@ function renderBoard() {
   instantWinCell.setAttribute('aria-pressed', 'false');
   instantWinCell.dataset.text = currentInstantWin;
 
-  fitCells(cells, { minPx: 7, maxPx: 14 });
   requestAnimationFrame(() => {
-    fitTextToCell(instantWinCell, currentInstantWin, { minPx: 6, maxPx: 11 });
+    requestAnimationFrame(() => {
+      fitCells(cells, { minPx: 8, maxPx: 26 });
+      sizeInstantWinCell(instantWinCell, gridEl);
+      fitTextToCell(instantWinCell, currentInstantWin, { minPx: 7, maxPx: 16 });
+    });
   });
 }
 

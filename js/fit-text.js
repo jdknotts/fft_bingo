@@ -1,14 +1,20 @@
-export function fitTextToCell(cell, text, { minPx = 7, maxPx = 15 } = {}) {
-  cell.textContent = text;
-  cell.style.fontSize = `${maxPx}px`;
-
-  const fits = () =>
-    cell.scrollHeight <= cell.clientHeight + 1
-    && cell.scrollWidth <= cell.clientWidth + 1;
-
-  if (fits()) {
-    return;
+export function fitTextToCell(cell, text, { minPx = 8, maxPx = 28 } = {}) {
+  let textEl = cell.querySelector('.cell-text');
+  if (!textEl) {
+    textEl = document.createElement('span');
+    textEl.className = 'cell-text';
+    cell.appendChild(textEl);
   }
+
+  textEl.textContent = text;
+
+  const fits = (sizePx) => {
+    textEl.style.fontSize = `${sizePx}px`;
+    return (
+      textEl.scrollHeight <= cell.clientHeight
+      && textEl.scrollWidth <= cell.clientWidth
+    );
+  };
 
   let low = minPx;
   let high = maxPx;
@@ -16,8 +22,7 @@ export function fitTextToCell(cell, text, { minPx = 7, maxPx = 15 } = {}) {
 
   while (low <= high) {
     const mid = Math.floor((low + high) / 2);
-    cell.style.fontSize = `${mid}px`;
-    if (fits()) {
+    if (fits(mid)) {
       best = mid;
       low = mid + 1;
     } else {
@@ -25,11 +30,20 @@ export function fitTextToCell(cell, text, { minPx = 7, maxPx = 15 } = {}) {
     }
   }
 
-  cell.style.fontSize = `${best}px`;
+  textEl.style.fontSize = `${best}px`;
 }
 
 export function fitCells(cells, options) {
-  requestAnimationFrame(() => {
-    cells.forEach((cell) => fitTextToCell(cell, cell.dataset.text ?? cell.textContent, options));
+  cells.forEach((cell) => {
+    fitTextToCell(cell, cell.dataset.text ?? cell.textContent, options);
   });
+}
+
+export function sizeInstantWinCell(instantWinCell, gridEl, { scale = 0.72 } = {}) {
+  const sampleCell = gridEl.querySelector('.cell');
+  if (!sampleCell) return;
+
+  const cellSize = sampleCell.getBoundingClientRect().width * scale;
+  instantWinCell.style.width = `${cellSize}px`;
+  instantWinCell.style.height = `${cellSize}px`;
 }
