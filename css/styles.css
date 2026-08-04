@@ -177,6 +177,11 @@ button:disabled {
 .instant-win-cell {
   flex: 0 0 auto;
   aspect-ratio: 1;
+  border-color: #ff00ff;
+}
+
+.instant-win-cell:hover {
+  border-color: #ff66ff;
 }
 
 .cell:hover {
