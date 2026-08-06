@@ -49,4 +49,17 @@ export function formatVictoryMessage(items) {
   return `FFT BINGO!! ${parts.join(', ')}`;
 }
 
+export function isTurboBingo(marked) {
+  return marked.length === 9 && marked.every(Boolean);
+}
+
+export function formatTurboVictoryMessage(items) {
+  const parts = items.map((item, index) => `${index + 1}. ${item.short}`);
+  return `FFT TURBO BINGO!!!! ${parts.join(', ')}`;
+}
+
+export function formatInstantWinMessage(itemText) {
+  return `FFT BINGO INSTANT WIN!!: ${itemText}`;
+}
+
 export { BINGO_LINES };

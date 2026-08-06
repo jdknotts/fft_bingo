@@ -40,13 +40,13 @@ Any mention that tight end is deep this year,preseason,TRUE,TE is deep
 Any mention that CMC is coming off a high usage season,,FALSE,CMC high usage
 Adam struggles with a soundbite,Adam,FALSE,Adam struggles w/ soundbite
 Adam and Heath get mad at each other,"Adam, Heath",FALSE,Adam/Heath mad at each other
-Adam says Jahmyr Gibbs will be incredible this year,"Adam, preseason",FALSE,Adam steams up Jahmyr Gibbs
-"Adam drops a trailing preposition (like saying ""pumped"" instead of ""pumped up"" or ""hang"" instead of ""hang out"") despite his war against dropping the ""up"" from ""washed up""","Adam, Heath",FALSE,Adam: trailing preposition
+Adam talks about how good Jahmyr Gibbs is going to be this year,"Adam, preseason",FALSE,Adam steams up Jahmyr Gibbs
+"Adam drops a trailing preposition despite his war against ""washed""",Adam,FALSE,Adam drops trailing preposition
 Dave advocates for using a handcuff strategy,Dave,FALSE,Dave: handcuff strategy
 "Any mention of the ""friendship strategy""",,FALSE,Friendship strategy
 Any mention of best ball,,FALSE,Best ball
 Any mention of the green zone,,FALSE,Green zone
-Adam does Game of the Week,"Adam, Dave, Thursday OR Friday",TRUE,Adam does GOTW
+Game of the Week,"Adam, Dave, Thursday OR Friday, season",TRUE,Game of the Week
 PITT MAN music,,FALSE,PITT MAN music
 Jamey has a laughing fit,Jamey,FALSE,Jamey laughing fit
 Adam and Dan get mad at each other,"Adam, Dan",FALSE,Adam/Dan mad at each other
@@ -62,7 +62,7 @@ Dan hasn't seen a movie,Dan,FALSE,Dan hasn't seen a movie
 Dan says auctions are better than snake drafts,Dan,FALSE,Dan: auctions > snake
 Heath talks about Zay Flowers,Heath,FALSE,Heath: Zay Flowers
 Dave talks about Jaylen Waddle,Dave,FALSE,Dave: Jaylen Waddle
-Fantasy Cops music is played,mailbag,TRUE,Fantasy Cops music
+Fantasy Cops music,mailbag,TRUE,Fantasy Cops music
 FFT Open plug,preseason,FALSE,FFT Open plug
 Dan talks about golf,Dan,FALSE,Dan: golf
 Jeremiyah Love soundbite,,FALSE,Jeremiyah Love soundbite
@@ -75,7 +75,7 @@ Adam gets razzed for his handcuff auction strategy,,FALSE,Adam's auction handcuf
 Adam gets razzed for Aizer statting,,FALSE,Adam razzed for Aizer statting
 Etienne gets pronounced the old way,,FALSE,Etienne pronounced old way
 "The meaning of ""sleeper"" vs ""breakout"" is debated",preseason,FALSE,"""sleeper"" vs ""breakout"" debate"
-"Rocket ship emoji or ""to the moon"" is invoked to describe a player with a new opportunity",,FALSE,"rocket ship emoji or ""to the moon"""
+"Rocket ship emoji or ""to the moon"" invoked",,FALSE,"rocket ship emoji or ""to the moon"""
 Someone does a Dan impression,,FALSE,Dan impression
 """The Heat[h] is On"" soundbite",,FALSE,Heat[h] is On soundbite
 Adam is injured,Adam,FALSE,Adam injured
@@ -83,4 +83,5 @@ Dan brings up New Jersey,Dan,FALSE,Dan brings up New Jersey
 Adam's clothing is critiqued,Adam,FALSE,Adam's clothing critiqued
 Dan's clothing is critiqued,Dan,FALSE,Dan's clothing is critiqued
 "Jacob says, ""you know??""",Jacob,FALSE,"Jacob says, ""you know??"""
-"""Buy or Sell?"" question",,FALSE,Buy or Sell
+Someone does a Buy or Sell,,FALSE,Buy or Sell
+Twitter poll consulted,,FALSE,twitter poll

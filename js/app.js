@@ -2,7 +2,7 @@ import { initSuggest } from './suggest.js';
 import { loadInstantWinItems, loadItems } from './csv.js';
 import { clearInstantWinLayout, fitCells, fitTextToCell, layoutInstantWin } from './fit-text.js';
 import { buildContext, filterEligibleItems } from './filters.js';
-import { findCompletedLines, formatVictoryMessage, generateGrid } from './grid.js';
+import { findCompletedLines, formatInstantWinMessage, formatTurboVictoryMessage, formatVictoryMessage, generateGrid, isTurboBingo } from './grid.js';
 
 const hostsGroup = document.getElementById('hosts-group');
 const miscGroup = document.getElementById('misc-group');
@@ -15,22 +15,37 @@ const instantWinLabel = document.getElementById('instant-win-label');
 const confirmBtn = document.getElementById('confirm-btn');
 const shareArea = document.getElementById('share-area');
 const victorySection = document.getElementById('victory-section');
-const victoryMessage = document.getElementById('victory-message');
-const copyBtn = document.getElementById('copy-btn');
-const copyFeedback = document.getElementById('copy-feedback');
+const victoryList = document.getElementById('victory-list');
 const instantWinSection = document.getElementById('instant-win-section');
 const instantWinMessage = document.getElementById('instant-win-message');
 const instantWinCopyBtn = document.getElementById('instant-win-copy-btn');
 const instantWinCopyFeedback = document.getElementById('instant-win-copy-feedback');
+const displayDateEl = document.getElementById('display-date');
 
 let allItems = [];
 let instantWinItems = [];
 let currentGrid = [];
 let currentInstantWin = '';
 let marked = Array(9).fill(false);
-let activeLine = null;
+
+const COPY_PROMPT = 'Copy victory text to share in YouTube chat.';
 
 init();
+
+function formatDisplayDate(date = new Date()) {
+  const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return `${weekdays[date.getDay()]} ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+}
+
+function syncPanelWidth() {
+  const appStack = document.querySelector('.app-stack');
+  const controlRow = document.querySelector('.control-row');
+  if (!appStack || !controlRow) return;
+
+  appStack.style.width = 'fit-content';
+  appStack.style.width = `${Math.ceil(controlRow.getBoundingClientRect().width)}px`;
+}
 
 async function init() {
   try {
@@ -38,14 +53,16 @@ async function init() {
       loadItems(),
       loadInstantWinItems(),
     ]);
+    if (displayDateEl) {
+      displayDateEl.textContent = formatDisplayDate();
+    }
+    syncPanelWidth();
     generateBtn.addEventListener('click', handleGenerate);
     confirmBtn.addEventListener('click', handleConfirm);
-    copyBtn.addEventListener('click', () => handleCopy(victoryMessage, copyFeedback));
     instantWinCopyBtn.addEventListener('click', () => handleCopy(instantWinMessage, instantWinCopyFeedback));
-    victoryMessage.addEventListener('click', () => handleCopy(victoryMessage, copyFeedback));
     instantWinMessage.addEventListener('click', () => handleCopy(instantWinMessage, instantWinCopyFeedback));
     instantWinCell.addEventListener('click', handleInstantWinClick);
-    window.addEventListener('resize', handleBoardResize);
+    window.addEventListener('resize', handleResize);
     initSuggest();
   } catch (error) {
     statusMsg.textContent = error.message;
@@ -75,16 +92,53 @@ function updateShareAreaVisibility() {
   shareArea.classList.toggle('is-visible', anyVisible);
 }
 
+function clearVictoryList() {
+  victoryList.innerHTML = '';
+}
+
+function clearVictoryDisplay() {
+  setShareBlockVisible(victorySection, false);
+  clearVictoryList();
+  updateShareAreaVisibility();
+}
+
+function renderVictoryEntries(messages) {
+  clearVictoryList();
+
+  messages.forEach((text) => {
+    const entry = document.createElement('div');
+    entry.className = 'victory-entry';
+
+    const message = document.createElement('p');
+    message.className = 'share-message';
+    message.textContent = text;
+
+    const copyButton = document.createElement('button');
+    copyButton.type = 'button';
+    copyButton.className = 'secondary-btn copy-btn';
+    copyButton.textContent = COPY_PROMPT;
+
+    const feedback = document.createElement('span');
+    feedback.className = 'copy-feedback';
+    feedback.setAttribute('aria-live', 'polite');
+
+    message.addEventListener('click', () => handleCopy(message, feedback));
+    copyButton.addEventListener('click', () => handleCopy(message, feedback));
+
+    entry.append(message, copyButton, feedback);
+    victoryList.appendChild(entry);
+  });
+}
+
 function handleGenerate() {
   statusMsg.textContent = '';
   setShareBlockVisible(victorySection, false);
   setShareBlockVisible(instantWinSection, false);
   updateShareAreaVisibility();
-  copyFeedback.textContent = '';
+  clearVictoryList();
   instantWinCopyFeedback.textContent = '';
-  activeLine = null;
   marked = Array(9).fill(false);
-  confirmBtn.disabled = true;
+  resetConfirmButton();
 
   const context = buildContext({
     hosts: getSelectedHosts(),
@@ -104,6 +158,7 @@ function handleGenerate() {
 
   renderBoard();
   gameSection.hidden = false;
+  syncPanelWidth();
 }
 
 function pickInstantWin(context) {
@@ -137,34 +192,57 @@ function renderBoard() {
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      fitCells(cells, { minPx: 8, maxPx: 26, fontScale: 0.75 });
+      syncPanelWidth();
+      fitCells(cells, { minPx: 6, maxPx: 18, fontScale: 0.75 });
       layoutInstantWin(gridEl, instantWinLabel, instantWinCell);
-      fitTextToCell(instantWinCell, currentInstantWin, { minPx: 8, maxPx: 22, fontScale: 0.75 });
+      fitTextToCell(instantWinCell, currentInstantWin, { minPx: 6, maxPx: 16, fontScale: 0.75 });
     });
   });
 }
 
-function handleBoardResize() {
+function handleResize() {
+  syncPanelWidth();
   if (gameSection.hidden || gridEl.children.length === 0) return;
+  const cells = [...gridEl.querySelectorAll('.cell')];
+  fitCells(cells, { minPx: 6, maxPx: 18, fontScale: 0.75 });
   layoutInstantWin(gridEl, instantWinLabel, instantWinCell);
-  fitTextToCell(instantWinCell, currentInstantWin, { minPx: 8, maxPx: 22, fontScale: 0.75 });
+  fitTextToCell(instantWinCell, currentInstantWin, { minPx: 6, maxPx: 16, fontScale: 0.75 });
+}
+
+function resetConfirmButton() {
+  confirmBtn.textContent = 'CONFIRM BINGO!?';
+  confirmBtn.classList.remove('turbo-bingo');
+  confirmBtn.disabled = true;
+}
+
+function updateConfirmButton() {
+  const completedLines = findCompletedLines(marked);
+  if (isTurboBingo(marked)) {
+    confirmBtn.textContent = 'CONFIRM TURBO BINGO!?!?!?!?';
+    confirmBtn.classList.add('turbo-bingo');
+    confirmBtn.disabled = false;
+    return;
+  }
+
+  confirmBtn.textContent = 'CONFIRM BINGO!?';
+  confirmBtn.classList.remove('turbo-bingo');
+  if (completedLines.length > 0) {
+    confirmBtn.disabled = false;
+  } else {
+    confirmBtn.disabled = true;
+    clearVictoryDisplay();
+  }
 }
 
 function toggleCell(index, cell) {
+  if (victorySection.classList.contains('is-visible')) {
+    clearVictoryDisplay();
+  }
+
   marked[index] = !marked[index];
   cell.classList.toggle('marked', marked[index]);
   cell.setAttribute('aria-pressed', String(marked[index]));
-
-  const completedLines = findCompletedLines(marked);
-  if (completedLines.length > 0) {
-    activeLine = completedLines[0];
-    confirmBtn.disabled = false;
-  } else {
-    activeLine = null;
-    confirmBtn.disabled = true;
-    setShareBlockVisible(victorySection, false);
-    updateShareAreaVisibility();
-  }
+  updateConfirmButton();
 }
 
 function handleInstantWinClick() {
@@ -172,7 +250,7 @@ function handleInstantWinClick() {
   instantWinCell.setAttribute('aria-pressed', String(isMarked));
 
   if (isMarked) {
-    instantWinMessage.textContent = `INSTANT WIN!!: ${currentInstantWin}`;
+    instantWinMessage.textContent = formatInstantWinMessage(currentInstantWin);
     setShareBlockVisible(instantWinSection, true);
     instantWinCopyFeedback.textContent = '';
   } else {
@@ -183,12 +261,20 @@ function handleInstantWinClick() {
 }
 
 function handleConfirm() {
-  if (!activeLine) return;
+  if (isTurboBingo(marked)) {
+    renderVictoryEntries([formatTurboVictoryMessage(currentGrid)]);
+  } else {
+    const completedLines = findCompletedLines(marked);
+    if (completedLines.length === 0) return;
 
-  const winningItems = activeLine.map((index) => currentGrid[index]);
-  victoryMessage.textContent = formatVictoryMessage(winningItems);
+    const messages = completedLines.map((line) => {
+      const winningItems = line.map((index) => currentGrid[index]);
+      return formatVictoryMessage(winningItems);
+    });
+    renderVictoryEntries(messages);
+  }
+
   setShareBlockVisible(victorySection, true);
-  copyFeedback.textContent = '';
   updateShareAreaVisibility();
 }
 

@@ -10,25 +10,27 @@
   <main class="container">
     <header>
       <h1>FFT BINGO</h1>
+      <p class="display-date" id="display-date"></p>
     </header>
 
+    <div class="app-stack">
     <section class="controls">
       <div class="control-row">
-        <fieldset>
+        <fieldset class="hosts-fieldset">
           <legend>Hosts</legend>
-          <div class="checkbox-group" id="hosts-group">
+          <div class="checkbox-group hosts-grid" id="hosts-group">
             <label><input type="checkbox" name="host" value="Adam" checked> Adam</label>
-            <label><input type="checkbox" name="host" value="Dan"> Dan</label>
-            <label><input type="checkbox" name="host" value="Heath"> Heath</label>
-            <label><input type="checkbox" name="host" value="Jamey"> Jamey</label>
             <label><input type="checkbox" name="host" value="Dave"> Dave</label>
+            <label><input type="checkbox" name="host" value="Jamey"> Jamey</label>
+            <label><input type="checkbox" name="host" value="Heath"> Heath</label>
+            <label><input type="checkbox" name="host" value="Dan"> Dan</label>
             <label><input type="checkbox" name="host" value="Jacob"> Jacob</label>
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset class="misc-fieldset">
           <legend>Miscellaneous</legend>
-          <div class="checkbox-group" id="misc-group">
+          <div class="checkbox-group misc-stack" id="misc-group">
             <label><input type="checkbox" name="misc" value="mailbag"> Mailbag</label>
             <label><input type="checkbox" name="misc" value="draft"> Mock Draft</label>
           </div>
@@ -52,14 +54,12 @@
 
       <div class="share-area" id="share-area">
         <div id="victory-section" class="share-block">
-          <p id="victory-message" class="share-message"></p>
-          <button type="button" id="copy-btn" class="secondary-btn copy-btn">⧉ Click to copy victory text to share in YouTube chat.</button>
-          <span id="copy-feedback" class="copy-feedback" aria-live="polite"></span>
+          <div id="victory-list"></div>
         </div>
 
         <div id="instant-win-section" class="share-block">
           <p id="instant-win-message" class="share-message"></p>
-          <button type="button" id="instant-win-copy-btn" class="secondary-btn copy-btn">⧉ Click to copy victory text to share in YouTube chat.</button>
+          <button type="button" id="instant-win-copy-btn" class="secondary-btn copy-btn">Copy victory text to share in YouTube chat.</button>
           <span id="instant-win-copy-feedback" class="copy-feedback" aria-live="polite"></span>
         </div>
       </div>
@@ -73,6 +73,7 @@
       </div>
       <p id="suggest-feedback" class="suggest-feedback" aria-live="polite"></p>
     </section>
+    </div>
   </main>
 
   <iframe id="google-form-target" name="google-form-target" title="Suggestion submission" hidden></iframe>
