@@ -46,7 +46,7 @@ export function findCompletedLines(marked) {
 
 export function formatVictoryMessage(items) {
   const parts = items.map((item, index) => `${index + 1}. ${item.short}`);
-  return `FFT BINGO!! ${parts.join(', ')}`;
+  return `FFT BINGO!! ${parts.join(' ')}`;
 }
 
 export function isTurboBingo(marked) {
@@ -55,7 +55,7 @@ export function isTurboBingo(marked) {
 
 export function formatTurboVictoryMessage(items) {
   const parts = items.map((item, index) => `${index + 1}. ${item.short}`);
-  return `FFT TURBO BINGO!!!! ${parts.join(', ')}`;
+  return `FFT TURBO BINGO!!!! ${parts.join(' ')}`;
 }
 
 export function formatInstantWinMessage(itemText) {
