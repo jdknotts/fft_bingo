@@ -40,7 +40,7 @@ export function fitCells(cells, options) {
   });
 }
 
-const BOARD_GAP_PX = 4;
+const BOARD_GAP_PX = 6;
 const LABEL_GAP_PX = 4;
 
 export function layoutInstantWin(gridEl, instantWinLabel, instantWinCell) {

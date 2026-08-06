@@ -1,4 +1,5 @@
 import { initSuggest } from './suggest.js';
+import { applyDailyDefaults } from './daily-presets.js';
 import { loadInstantWinItems, loadItems } from './csv.js';
 import { clearInstantWinLayout, fitCells, fitTextToCell, layoutInstantWin } from './fit-text.js';
 import { buildContext, filterEligibleItems } from './filters.js';
@@ -28,7 +29,7 @@ let currentGrid = [];
 let currentInstantWin = '';
 let marked = Array(9).fill(false);
 
-const COPY_PROMPT = 'Copy victory text to share in YouTube chat.';
+const COPY_PROMPT = '⧉ Copy victory text to share in YouTube chat.';
 
 init();
 
@@ -49,6 +50,7 @@ function syncPanelWidth() {
 
 async function init() {
   try {
+    await applyDailyDefaults(hostsGroup, miscGroup);
     [allItems, instantWinItems] = await Promise.all([
       loadItems(),
       loadInstantWinItems(),
@@ -193,9 +195,9 @@ function renderBoard() {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       syncPanelWidth();
-      fitCells(cells, { minPx: 6, maxPx: 18, fontScale: 0.75 });
+      fitCells(cells, { minPx: 8, maxPx: 22, fontScale: 0.75 });
       layoutInstantWin(gridEl, instantWinLabel, instantWinCell);
-      fitTextToCell(instantWinCell, currentInstantWin, { minPx: 6, maxPx: 16, fontScale: 0.75 });
+      fitTextToCell(instantWinCell, currentInstantWin, { minPx: 8, maxPx: 20, fontScale: 0.75 });
     });
   });
 }
@@ -204,9 +206,9 @@ function handleResize() {
   syncPanelWidth();
   if (gameSection.hidden || gridEl.children.length === 0) return;
   const cells = [...gridEl.querySelectorAll('.cell')];
-  fitCells(cells, { minPx: 6, maxPx: 18, fontScale: 0.75 });
+  fitCells(cells, { minPx: 8, maxPx: 22, fontScale: 0.75 });
   layoutInstantWin(gridEl, instantWinLabel, instantWinCell);
-  fitTextToCell(instantWinCell, currentInstantWin, { minPx: 6, maxPx: 16, fontScale: 0.75 });
+  fitTextToCell(instantWinCell, currentInstantWin, { minPx: 8, maxPx: 20, fontScale: 0.75 });
 }
 
 function resetConfirmButton() {
