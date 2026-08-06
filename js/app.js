@@ -1,6 +1,6 @@
 import { initSuggest } from './suggest.js';
 import { loadInstantWinItems, loadItems } from './csv.js';
-import { fitCells, fitTextToCell, sizeInstantWinCell } from './fit-text.js';
+import { clearInstantWinLayout, fitCells, fitTextToCell, layoutInstantWin } from './fit-text.js';
 import { buildContext, filterEligibleItems } from './filters.js';
 import { findCompletedLines, formatVictoryMessage, generateGrid } from './grid.js';
 
@@ -11,6 +11,7 @@ const statusMsg = document.getElementById('status-msg');
 const gameSection = document.getElementById('game-section');
 const gridEl = document.getElementById('bingo-grid');
 const instantWinCell = document.getElementById('instant-win-cell');
+const instantWinLabel = document.getElementById('instant-win-label');
 const confirmBtn = document.getElementById('confirm-btn');
 const shareArea = document.getElementById('share-area');
 const victorySection = document.getElementById('victory-section');
@@ -44,6 +45,7 @@ async function init() {
     victoryMessage.addEventListener('click', () => handleCopy(victoryMessage, copyFeedback));
     instantWinMessage.addEventListener('click', () => handleCopy(instantWinMessage, instantWinCopyFeedback));
     instantWinCell.addEventListener('click', handleInstantWinClick);
+    window.addEventListener('resize', handleBoardResize);
     initSuggest();
   } catch (error) {
     statusMsg.textContent = error.message;
@@ -63,16 +65,21 @@ function getMiscFlags() {
   };
 }
 
+function setShareBlockVisible(section, visible) {
+  section.classList.toggle('is-visible', visible);
+}
+
 function updateShareAreaVisibility() {
-  const anyVisible = !victorySection.hidden || !instantWinSection.hidden;
-  shareArea.hidden = !anyVisible;
+  const anyVisible = victorySection.classList.contains('is-visible')
+    || instantWinSection.classList.contains('is-visible');
+  shareArea.classList.toggle('is-visible', anyVisible);
 }
 
 function handleGenerate() {
   statusMsg.textContent = '';
-  shareArea.hidden = true;
-  victorySection.hidden = true;
-  instantWinSection.hidden = true;
+  setShareBlockVisible(victorySection, false);
+  setShareBlockVisible(instantWinSection, false);
+  updateShareAreaVisibility();
   copyFeedback.textContent = '';
   instantWinCopyFeedback.textContent = '';
   activeLine = null;
@@ -88,7 +95,7 @@ function handleGenerate() {
 
   try {
     currentGrid = generateGrid(eligible);
-    currentInstantWin = pickInstantWin();
+    currentInstantWin = pickInstantWin(context);
   } catch (error) {
     statusMsg.textContent = error.message;
     gameSection.hidden = true;
@@ -99,11 +106,12 @@ function handleGenerate() {
   gameSection.hidden = false;
 }
 
-function pickInstantWin() {
-  if (instantWinItems.length === 0) {
-    throw new Error('No instant win items available.');
+function pickInstantWin(context) {
+  const eligible = filterEligibleItems(instantWinItems, context);
+  if (eligible.length === 0) {
+    throw new Error('No instant win items match the current filters.');
   }
-  return instantWinItems[Math.floor(Math.random() * instantWinItems.length)];
+  return eligible[Math.floor(Math.random() * eligible.length)].item;
 }
 
 function renderBoard() {
@@ -125,14 +133,21 @@ function renderBoard() {
   instantWinCell.classList.remove('instant-win-marked');
   instantWinCell.setAttribute('aria-pressed', 'false');
   instantWinCell.dataset.text = currentInstantWin;
+  clearInstantWinLayout(instantWinLabel, instantWinCell);
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       fitCells(cells, { minPx: 8, maxPx: 26, fontScale: 0.75 });
-      sizeInstantWinCell(instantWinCell, gridEl);
-      fitTextToCell(instantWinCell, currentInstantWin, { minPx: 8, maxPx: 22 });
+      layoutInstantWin(gridEl, instantWinLabel, instantWinCell);
+      fitTextToCell(instantWinCell, currentInstantWin, { minPx: 8, maxPx: 22, fontScale: 0.75 });
     });
   });
+}
+
+function handleBoardResize() {
+  if (gameSection.hidden || gridEl.children.length === 0) return;
+  layoutInstantWin(gridEl, instantWinLabel, instantWinCell);
+  fitTextToCell(instantWinCell, currentInstantWin, { minPx: 8, maxPx: 22, fontScale: 0.75 });
 }
 
 function toggleCell(index, cell) {
@@ -147,7 +162,7 @@ function toggleCell(index, cell) {
   } else {
     activeLine = null;
     confirmBtn.disabled = true;
-    victorySection.hidden = true;
+    setShareBlockVisible(victorySection, false);
     updateShareAreaVisibility();
   }
 }
@@ -158,13 +173,13 @@ function handleInstantWinClick() {
 
   if (isMarked) {
     instantWinMessage.textContent = `INSTANT WIN!!: ${currentInstantWin}`;
-    instantWinSection.hidden = false;
+    setShareBlockVisible(instantWinSection, true);
     instantWinCopyFeedback.textContent = '';
-    updateShareAreaVisibility();
   } else {
-    instantWinSection.hidden = true;
-    updateShareAreaVisibility();
+    setShareBlockVisible(instantWinSection, false);
   }
+
+  updateShareAreaVisibility();
 }
 
 function handleConfirm() {
@@ -172,7 +187,7 @@ function handleConfirm() {
 
   const winningItems = activeLine.map((index) => currentGrid[index]);
   victoryMessage.textContent = formatVictoryMessage(winningItems);
-  victorySection.hidden = false;
+  setShareBlockVisible(victorySection, true);
   copyFeedback.textContent = '';
   updateShareAreaVisibility();
 }

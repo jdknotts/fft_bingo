@@ -19,7 +19,7 @@ Items live in `stimuli/FFT Bingo Items - bingo_items.csv` with columns:
 - **Center** — whether the item can be placed in the free center square
 - **Short** — abbreviated text used in the victory share string (add manually when adding items)
 
-Rare instant-win items live in `stimuli/FFT Bingo Items - instant_win.csv` (single column, no header).
+Rare instant-win items live in `stimuli/FFT Bingo Items - instant_win.csv` with columns **Item** and **Tags** (same tag rules as bingo items).
 
 ## Tag rules
 

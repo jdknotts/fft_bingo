@@ -17,6 +17,7 @@ body {
   max-width: 640px;
   margin: 0 auto;
   padding: 0.5rem 0.65rem 0.75rem;
+  overflow-x: visible;
 }
 
 header {
@@ -105,51 +106,48 @@ button:disabled {
 
 .game {
   margin-top: 0.65rem;
+  overflow: visible;
 }
 
-.board {
-  display: flex;
-  align-items: stretch;
-  gap: 0.45rem;
-  margin-bottom: 0.6rem;
-}
-
-.grid-main {
-  flex: 1;
-  min-width: 0;
+.grid-column {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 4px;
+  overflow: visible;
 }
 
-.grid {
+.board-area {
+  position: relative;
+  width: 100%;
+}
+
+.bingo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
-}
-
-.instant-win-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 26%;
-  min-width: 72px;
-  max-width: 110px;
+  width: 100%;
 }
 
 .instant-win-label {
+  position: absolute;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   color: #ff00ff;
   text-align: center;
-  margin-bottom: 0.35rem;
   line-height: 1.15;
+  margin: 0;
+}
+
+.instant-win-cell {
+  position: absolute;
+  border-color: #ff00ff;
 }
 
 .cell {
   aspect-ratio: 1;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,12 +170,6 @@ button:disabled {
   hyphens: none;
   word-break: normal;
   overflow-wrap: normal;
-}
-
-.instant-win-cell {
-  flex: 0 0 auto;
-  aspect-ratio: 1;
-  border-color: #ff00ff;
 }
 
 .instant-win-cell:hover {
@@ -210,12 +202,25 @@ button:disabled {
 }
 
 .share-area {
-  margin-top: 0.25rem;
+  display: none;
+  margin-top: 0.6rem;
   padding-top: 0.55rem;
   border-top: 1px solid #333;
 }
 
-.share-block + .share-block {
+.share-area.is-visible {
+  display: block;
+}
+
+.share-block {
+  display: none;
+}
+
+.share-block.is-visible {
+  display: block;
+}
+
+.share-block + .share-block.is-visible {
   margin-top: 0.65rem;
   padding-top: 0.65rem;
   border-top: 1px solid #333;
@@ -313,11 +318,6 @@ button:disabled {
 
   .control-row {
     grid-template-columns: 1fr;
-  }
-
-  .instant-win-column {
-    width: 22%;
-    min-width: 62px;
   }
 
   .instant-win-label {

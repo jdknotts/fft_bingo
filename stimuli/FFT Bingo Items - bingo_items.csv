@@ -30,7 +30,7 @@ Adam highlights an email or youtube comment that praises him,Adam,FALSE,Adam hig
 Someone highlights a youtube comment that mocks Adam,,FALSE,YT comment mocks Adam
 Someone talks about one of their matchups,season,TRUE,Matchup talk
 Adam and Dan's tennis rivalry is mentioned,,FALSE,Adam/Dan tennis rivalry
-The ERIC soundbite is played,,TRUE,ERIC soundbite
+ERIC soundbite,,TRUE,ERIC soundbite
 "Someone says, ""start em all, sit em all""","Thursday OR Friday, season",FALSE,"Someone: ""start em all, sit em all"""
 Dan agrees with Jamey,"Dan, Jamey",TRUE,Dan agrees w/ Jamey
 Adam talks about explosiveness,Adam,TRUE,Adam talks about explosiveness
@@ -47,7 +47,7 @@ Dave advocates for using a handcuff strategy,Dave,FALSE,Dave: handcuff strategy
 Any mention of best ball,,FALSE,Best ball
 Any mention of the green zone,,FALSE,Green zone
 Adam does Game of the Week,"Adam, Dave, Thursday OR Friday",TRUE,Adam does GOTW
-The PITT MAN music is played,,FALSE,PITT MAN music
+PITT MAN music,,FALSE,PITT MAN music
 Jamey has a laughing fit,Jamey,FALSE,Jamey laughing fit
 Adam and Dan get mad at each other,"Adam, Dan",FALSE,Adam/Dan mad at each other
 Beyond the Box Score Podcast plug,,TRUE,Beyond the Box Score
@@ -57,7 +57,7 @@ Dan says he doesn't watch movies,Dan,FALSE,Dan doesn't watch movies
 Jacob is silent for 2 straight minutes,Jacob,TRUE,Jacob silent 2 min
 "Dave says ""drop-o-meter"" like ""DROP-oh-mee-ter""",Monday,TRUE,"""DROP-oh-mee-ter"""
 "Dave says ""drop-o-meter"" like ""druh-POM-uh-ter""",Monday,TRUE,"""druh-POM-uh-ter"""
-Jamey curses to provoke Adam,"Jamey, Adam",FALSE,Jamey curses
+Jamey curses,"Jamey, Adam",FALSE,Jamey curses
 Dan hasn't seen a movie,Dan,FALSE,Dan hasn't seen a movie
 Dan says auctions are better than snake drafts,Dan,FALSE,Dan: auctions > snake
 Heath talks about Zay Flowers,Heath,FALSE,Heath: Zay Flowers
@@ -65,17 +65,22 @@ Dave talks about Jaylen Waddle,Dave,FALSE,Dave: Jaylen Waddle
 Fantasy Cops music is played,mailbag,TRUE,Fantasy Cops music
 FFT Open plug,preseason,FALSE,FFT Open plug
 Dan talks about golf,Dan,FALSE,Dan: golf
-Jeremiyah Love soundbite is played,,FALSE,Jeremiyah Love soundbite
-Any discussion of movies,,TRUE,Movies discussed
+Jeremiyah Love soundbite,,FALSE,Jeremiyah Love soundbite
 Heath mentions his projections,Heath,TRUE,Heath: projections
 Any mention that quarterback is deep this year,preseason,FALSE,QB is deep
 An Aizer stat is applied,,TRUE,Aizer stat
 Adam gets razzed for his handcuff auction strategy,,FALSE,Adam's auction handcuff strategy
-Draftathon plug,preseason,FALSE,Draftathon
 "Any mention of the wide receiver ""Blob""",preseason,FALSE,"""The Blob"""
 "Someone says ""dart throw""",,FALSE,"""dart throw"""
 Adam gets razzed for Aizer statting,,FALSE,Adam razzed for Aizer statting
-Travis Etienne's name gets pronounced the old way,,FALSE,Etienne pronounced old way
+Etienne gets pronounced the old way,,FALSE,Etienne pronounced old way
 "The meaning of ""sleeper"" vs ""breakout"" is debated",preseason,FALSE,"""sleeper"" vs ""breakout"" debate"
 "Rocket ship emoji or ""to the moon"" is invoked to describe a player with a new opportunity",,FALSE,"rocket ship emoji or ""to the moon"""
 Someone does a Dan impression,,FALSE,Dan impression
+"""The Heat[h] is On"" soundbite",,FALSE,Heat[h] is On soundbite
+Adam is injured,Adam,FALSE,Adam injured
+Dan brings up New Jersey,Dan,FALSE,Dan brings up New Jersey
+Adam's clothing is critiqued,Adam,FALSE,Adam's clothing critiqued
+Dan's clothing is critiqued,Dan,FALSE,Dan's clothing is critiqued
+"Jacob says, ""you know??""",Jacob,FALSE,"Jacob says, ""you know??"""
+"""Buy or Sell?"" question",,FALSE,Buy or Sell

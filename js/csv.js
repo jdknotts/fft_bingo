@@ -18,7 +18,7 @@ export async function loadInstantWinItems(url = INSTANT_WIN_URL) {
   }
 
   const text = await response.text();
-  return parseSingleColumnCsv(text);
+  return parseInstantWinCsv(text);
 }
 
 function parseBingoCsv(text) {
@@ -41,10 +41,24 @@ function parseBingoCsv(text) {
   });
 }
 
-function parseSingleColumnCsv(text) {
-  return parseCsvRows(text)
-    .map((row) => (row[0] ?? '').trim())
-    .filter(Boolean);
+function parseInstantWinCsv(text) {
+  const rows = parseCsvRows(text);
+  const [header, ...dataRows] = rows;
+  const columns = header.map((name) => name.trim().toLowerCase());
+
+  const itemIndex = columns.indexOf('item');
+  const tagsIndex = columns.indexOf('tags');
+
+  if (itemIndex === -1) {
+    throw new Error('Instant win CSV must include an Item column.');
+  }
+
+  return dataRows
+    .map((cells) => ({
+      item: (cells[itemIndex] ?? '').trim(),
+      tags: tagsIndex >= 0 ? (cells[tagsIndex] ?? '').trim() : '',
+    }))
+    .filter((row) => row.item);
 }
 
 function parseCsvRows(text) {
