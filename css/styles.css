@@ -109,7 +109,7 @@ button {
   padding: 0.4rem 0.55rem;
 }
 
-button:hover:not(:disabled) {
+button:hover:not(:disabled):not(.cell) {
   background: #222;
   border-color: #888;
 }
@@ -213,17 +213,20 @@ button:disabled {
   overflow-wrap: normal;
 }
 
-.cell:hover:not(.instant-win-cell) {
+.cell:hover:not(.instant-win-cell):not(.marked) {
+  background: #222;
   border-color: #888;
 }
 
-.cell.marked {
+.cell.marked,
+.cell.marked:hover {
   background: #ff8800;
   color: #000;
   border-color: #ff8800;
 }
 
-.instant-win-cell.instant-win-marked {
+.instant-win-cell.instant-win-marked,
+.instant-win-cell.instant-win-marked:hover {
   background: #ff00ff;
   color: #000;
   border-color: #ff00ff;
