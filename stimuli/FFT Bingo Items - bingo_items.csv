@@ -36,7 +36,7 @@ Dan agrees with Jamey,"Dan, Jamey",TRUE,Dan agrees w/ Jamey
 Adam talks about explosiveness,Adam,TRUE,Adam talks about explosiveness
 Someone gets mad about the guy they wanted getting taken in a mock draft,"draft, preseason",FALSE,Mad about mock draft pick
 A combine stat is mentioned,,FALSE,Combine stat
-Any mention that tight end is deep this year,preseason,TRUE,TE is deep
+Any mention that tight end is deep this year,preseason,FALSE,TE is deep
 Any mention that CMC is coming off a high usage season,,FALSE,CMC high usage
 Adam struggles with a soundbite,Adam,FALSE,Adam struggles w/ soundbite
 Adam and Heath get mad at each other,"Adam, Heath",FALSE,Adam/Heath mad at each other
@@ -60,8 +60,8 @@ Jacob is silent for 2 straight minutes,Jacob,TRUE,Jacob silent 2 min
 Jamey curses,"Jamey, Adam",FALSE,Jamey curses
 Dan hasn't seen a movie,Dan,FALSE,Dan hasn't seen a movie
 Dan says auctions are better than snake drafts,Dan,FALSE,Dan: auctions > snake
-Heath talks about Zay Flowers,Heath,FALSE,Heath: Zay Flowers
-Dave talks about Jaylen Waddle,Dave,FALSE,Dave: Jaylen Waddle
+Heath gets pumped about Zay Flowers,Heath,FALSE,Heath pumped on Flowers
+Heath gets pumped about Luther Burden,Heath,FALSE,Heath pumped on Burden
 Fantasy Cops music,mailbag,TRUE,Fantasy Cops music
 FFT Open plug,preseason,FALSE,FFT Open plug
 Dan talks about golf,Dan,FALSE,Dan: golf
