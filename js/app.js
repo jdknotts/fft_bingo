@@ -1,7 +1,7 @@
 import { initSuggest } from './suggest.js';
 import { applyDailyDefaults } from './daily-presets.js';
 import { loadInstantWinItems, loadItems } from './csv.js';
-import { clearInstantWinLayout, fitCells, fitTextToCell, layoutInstantWin } from './fit-text.js';
+import { fitCells, fitTextToCell } from './fit-text.js';
 import { buildContext, filterEligibleItems } from './filters.js';
 import { findCompletedLines, formatInstantWinMessage, formatTurboVictoryMessage, formatVictoryMessage, generateGrid, isTurboBingo } from './grid.js';
 
@@ -12,9 +12,7 @@ const statusMsg = document.getElementById('status-msg');
 const gameSection = document.getElementById('game-section');
 const gridEl = document.getElementById('bingo-grid');
 const instantWinCell = document.getElementById('instant-win-cell');
-const instantWinLabel = document.getElementById('instant-win-label');
 const confirmBtn = document.getElementById('confirm-btn');
-const shareArea = document.getElementById('share-area');
 const victorySection = document.getElementById('victory-section');
 const victoryList = document.getElementById('victory-list');
 const instantWinSection = document.getElementById('instant-win-section');
@@ -30,6 +28,8 @@ let currentInstantWin = '';
 let marked = Array(9).fill(false);
 
 const COPY_PROMPT = '⧉ Copy victory text to share in YouTube chat.';
+const FIT_OPTIONS = { minPx: 8, maxPx: 22, fontScale: 0.75 };
+const INSTANT_WIN_FIT_OPTIONS = { minPx: 8, maxPx: 20, fontScale: 0.75 };
 
 init();
 
@@ -88,12 +88,6 @@ function setShareBlockVisible(section, visible) {
   section.classList.toggle('is-visible', visible);
 }
 
-function updateShareAreaVisibility() {
-  const anyVisible = victorySection.classList.contains('is-visible')
-    || instantWinSection.classList.contains('is-visible');
-  shareArea.classList.toggle('is-visible', anyVisible);
-}
-
 function clearVictoryList() {
   victoryList.innerHTML = '';
 }
@@ -101,7 +95,6 @@ function clearVictoryList() {
 function clearVictoryDisplay() {
   setShareBlockVisible(victorySection, false);
   clearVictoryList();
-  updateShareAreaVisibility();
 }
 
 function renderVictoryEntries(messages) {
@@ -136,7 +129,6 @@ function handleGenerate() {
   statusMsg.textContent = '';
   setShareBlockVisible(victorySection, false);
   setShareBlockVisible(instantWinSection, false);
-  updateShareAreaVisibility();
   clearVictoryList();
   instantWinCopyFeedback.textContent = '';
   marked = Array(9).fill(false);
@@ -171,6 +163,19 @@ function pickInstantWin(context) {
   return eligible[Math.floor(Math.random() * eligible.length)].item;
 }
 
+function fitBoardText() {
+  const cells = [...gridEl.querySelectorAll('.cell')];
+  fitCells(cells, FIT_OPTIONS);
+  syncInstantWinHeight();
+  fitTextToCell(instantWinCell, currentInstantWin, INSTANT_WIN_FIT_OPTIONS);
+}
+
+function syncInstantWinHeight() {
+  const sampleCell = gridEl.querySelector('.cell');
+  if (!sampleCell) return;
+  instantWinCell.style.height = `${Math.round(sampleCell.offsetHeight / 2)}px`;
+}
+
 function renderBoard() {
   gridEl.innerHTML = '';
   const cells = [];
@@ -190,14 +195,12 @@ function renderBoard() {
   instantWinCell.classList.remove('instant-win-marked');
   instantWinCell.setAttribute('aria-pressed', 'false');
   instantWinCell.dataset.text = currentInstantWin;
-  clearInstantWinLayout(instantWinLabel, instantWinCell);
+  instantWinCell.style.height = '';
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       syncPanelWidth();
-      fitCells(cells, { minPx: 8, maxPx: 22, fontScale: 0.75 });
-      layoutInstantWin(gridEl, instantWinLabel, instantWinCell);
-      fitTextToCell(instantWinCell, currentInstantWin, { minPx: 8, maxPx: 20, fontScale: 0.75 });
+      fitBoardText();
     });
   });
 }
@@ -205,34 +208,33 @@ function renderBoard() {
 function handleResize() {
   syncPanelWidth();
   if (gameSection.hidden || gridEl.children.length === 0) return;
-  const cells = [...gridEl.querySelectorAll('.cell')];
-  fitCells(cells, { minPx: 8, maxPx: 22, fontScale: 0.75 });
-  layoutInstantWin(gridEl, instantWinLabel, instantWinCell);
-  fitTextToCell(instantWinCell, currentInstantWin, { minPx: 8, maxPx: 20, fontScale: 0.75 });
+  fitBoardText();
 }
 
 function resetConfirmButton() {
   confirmBtn.textContent = 'CONFIRM BINGO!?';
   confirmBtn.classList.remove('turbo-bingo');
-  confirmBtn.disabled = true;
+  confirmBtn.hidden = true;
 }
 
 function updateConfirmButton() {
   const completedLines = findCompletedLines(marked);
-  if (isTurboBingo(marked)) {
-    confirmBtn.textContent = 'CONFIRM TURBO BINGO!?!?!?!?';
-    confirmBtn.classList.add('turbo-bingo');
-    confirmBtn.disabled = false;
+  const hasBingo = completedLines.length > 0 || isTurboBingo(marked);
+
+  if (!hasBingo) {
+    resetConfirmButton();
+    clearVictoryDisplay();
     return;
   }
 
-  confirmBtn.textContent = 'CONFIRM BINGO!?';
-  confirmBtn.classList.remove('turbo-bingo');
-  if (completedLines.length > 0) {
-    confirmBtn.disabled = false;
+  confirmBtn.hidden = false;
+
+  if (isTurboBingo(marked)) {
+    confirmBtn.textContent = 'CONFIRM TURBO BINGO!?!?!?!?';
+    confirmBtn.classList.add('turbo-bingo');
   } else {
-    confirmBtn.disabled = true;
-    clearVictoryDisplay();
+    confirmBtn.textContent = 'CONFIRM BINGO!?';
+    confirmBtn.classList.remove('turbo-bingo');
   }
 }
 
@@ -258,8 +260,6 @@ function handleInstantWinClick() {
   } else {
     setShareBlockVisible(instantWinSection, false);
   }
-
-  updateShareAreaVisibility();
 }
 
 function handleConfirm() {
@@ -277,7 +277,6 @@ function handleConfirm() {
   }
 
   setShareBlockVisible(victorySection, true);
-  updateShareAreaVisibility();
 }
 
 async function handleCopy(messageEl, feedbackEl) {

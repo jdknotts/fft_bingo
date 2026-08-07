@@ -43,19 +43,17 @@
 
     <section class="game" id="game-section" hidden>
       <div class="grid-column">
-        <div class="board-area">
-          <div class="bingo-grid" id="bingo-grid" role="grid" aria-label="Bingo grid"></div>
-          <span class="instant-win-label" id="instant-win-label">INSTANT WIN!!</span>
-          <button type="button" id="instant-win-cell" class="cell instant-win-cell" aria-pressed="false"></button>
-        </div>
+        <div class="bingo-grid" id="bingo-grid" role="grid" aria-label="Bingo grid"></div>
 
-        <button type="button" id="confirm-btn" class="confirm-btn" disabled>CONFIRM BINGO!?</button>
-      </div>
+        <button type="button" id="confirm-btn" class="confirm-btn" hidden>CONFIRM BINGO!?</button>
 
-      <div class="share-area" id="share-area">
         <div id="victory-section" class="share-block">
           <div id="victory-list"></div>
         </div>
+
+        <button type="button" id="instant-win-cell" class="instant-win-cell" aria-pressed="false">
+          <span class="instant-win-legend">Instant Win</span>
+        </button>
 
         <div id="instant-win-section" class="share-block">
           <p id="instant-win-message" class="share-message"></p>
