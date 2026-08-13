@@ -13,14 +13,12 @@ Adam defends Daniel Jones,Adam,FALSE,Adam defends Daniel Jones
 Adam trashes the Chiefs,"Adam, Heath",FALSE,Adam trashes Chiefs
 Heath defends the Chiefs,"Adam, Heath",FALSE,Heath defends Chiefs
 Heath trashes the Chiefs,Heath,FALSE,Heath trashes Chiefs
-Sandwiches or burgers are discussed,,FALSE,Sandwiches/burgers
 "Dan says ""standpoint""",Dan,TRUE,"Dan: ""standpoint"""
-Adam's immune system is critiqued,,FALSE,Adam's immune critiqued
 Adam gets razzed for his commissioning,,FALSE,Adam razzed re: commissioning
-Jamey invokes the Spiderman meme,Jamey,TRUE,Spiderman meme
+Spiderman meme is mentioned,,TRUE,Spiderman meme
 "Dan says, ""I will say this""",Dan,TRUE,"Dan: ""I will say this"""
 Someone asks for more likes on youtube,Sunday_morning,FALSE,Ask for YT likes
-Dan gets mad at someone who submitted a mailbag or fantasy cops question,"mailbag, Dan",FALSE,Dan mad at mailbag submitter
+Dan gets mad at someone who submitted a mailbag question,"mailbag, Dan",FALSE,Dan mad at mailbag submitter
 Someone talks about a trade they made,season,FALSE,Trade talk
 Dave critiques Game of the Week execution,"Dave, Thursday OR Friday, season",FALSE,Dave critiques GOTW
 Adam sings,Adam,FALSE,Adam sings
@@ -48,7 +46,6 @@ Any mention of best ball,,FALSE,Best ball
 Any mention of the green zone,,FALSE,Green zone
 Game of the Week,"Adam, Dave, Thursday OR Friday, season",TRUE,Game of the Week
 PITT MAN music,,FALSE,PITT MAN music
-Jamey has a laughing fit,Jamey,FALSE,Jamey laughing fit
 Adam and Dan get mad at each other,"Adam, Dan",FALSE,Adam/Dan mad at each other
 Beyond the Box Score Podcast plug,,TRUE,Beyond the Box Score
 FFT Dynasty Podcast plug,,TRUE,FFT Dynasty plug
@@ -57,9 +54,9 @@ Dan says he doesn't watch movies,Dan,FALSE,Dan doesn't watch movies
 Jacob is silent for 2 straight minutes,Jacob,TRUE,Jacob silent 2 min
 "Dave says ""drop-o-meter"" like ""DROP-oh-mee-ter""",Monday,TRUE,"""DROP-oh-mee-ter"""
 "Dave says ""drop-o-meter"" like ""druh-POM-uh-ter""",Monday,TRUE,"""druh-POM-uh-ter"""
-Jamey curses,"Jamey, Adam",FALSE,Jamey curses
+Jamey curses,Jamey,FALSE,Jamey curses
 Dan hasn't seen a movie,Dan,FALSE,Dan hasn't seen a movie
-Dan says auctions are better than snake drafts,Dan,FALSE,Dan: auctions > snake
+Dan says auctions are better than snake drafts,Dan,TRUE,Dan: auctions > snake
 Heath gets pumped about Zay Flowers,Heath,FALSE,Heath pumped on Flowers
 Heath gets pumped about Luther Burden,Heath,FALSE,Heath pumped on Burden
 Fantasy Cops music,mailbag,TRUE,Fantasy Cops music
@@ -70,19 +67,20 @@ Heath mentions his projections,Heath,TRUE,Heath: projections
 Any mention that quarterback is deep this year,preseason,FALSE,QB is deep
 An Aizer stat is applied,,TRUE,Aizer stat
 Adam gets razzed for his handcuff auction strategy,,FALSE,Adam's auction handcuff strategy
-"Any mention of the wide receiver ""Blob""",preseason,FALSE,"""The Blob"""
-"Someone says ""dart throw""",,FALSE,"""dart throw"""
+Any mention of the Wide Receiver Blob,preseason,FALSE,"""The Blob"""
+"Someone says, ""dart throw""",,FALSE,"""dart throw"""
 Adam gets razzed for Aizer statting,,FALSE,Adam razzed for Aizer statting
 Etienne gets pronounced the old way,,FALSE,Etienne pronounced old way
 "The meaning of ""sleeper"" vs ""breakout"" is debated",preseason,FALSE,"""sleeper"" vs ""breakout"" debate"
 "Rocket ship emoji or ""to the moon"" invoked",,FALSE,"rocket ship emoji or ""to the moon"""
-Someone does a Dan impression,,FALSE,Dan impression
-"""The Heat[h] is On"" soundbite",,FALSE,Heat[h] is On soundbite
+"""The Heat[h] is On"" soundbite",Heath,FALSE,Heat[h] is On soundbite
 Dan brings up New Jersey,Dan,FALSE,Dan brings up New Jersey
-Adam's clothing is critiqued,Adam,FALSE,Adam's clothing critiqued
-Dan's clothing is critiqued,Dan,FALSE,Dan's clothing is critiqued
 "Jacob says, ""you know??""",Jacob,FALSE,"Jacob says, ""you know??"""
 Buy or Sell?,,FALSE,Buy or Sell?
 A poll is consulted,,FALSE,poll
-"Someone is referred to as ""the high guy""",,FALSE,"""the high guy"""
-"Someone is referred to as ""the low guy""",,FALSE,"""the low guy"""
+"Someone is referred to as, ""the high guy""",,FALSE,"""the high guy"""
+"Someone is referred to as, ""the low guy""",,FALSE,"""the low guy"""
+"Someone says, ""late round flier""",preseason,FALSE,"""late round flier"""
+Parker Washington pre-season hype mentioned,,FALSE,Parker Washington hype
+Treveyon Henderson is referred to as a bad value,preseason,FALSE,Henderson bad value
+"Someone references, ""FOOLED YOU""",,FALSE,FOOLED YOU
