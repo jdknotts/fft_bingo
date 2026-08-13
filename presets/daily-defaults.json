@@ -7,5 +7,15 @@
     ],
     "mailbag": false,
     "draft": false
+  },
+  "2026-08-12": {
+    "hosts": [
+      "Adam",
+      "Dave",
+      "Jamey",
+      "Heath"
+    ],
+    "mailbag": false,
+    "draft": false
   }
 }
