@@ -84,7 +84,7 @@ def main() -> int:
 
     try:
         day = parse_date(args.date)
-        hosts = parse_host_names(args.hosts) if args.hosts else ['Adam']
+        hosts = parse_host_names(args.hosts) if args.hosts else ['Adam', 'Dave', 'Jamey', 'Heath']
     except ValueError as error:
         print(f'Error: {error}', file=sys.stderr)
         return 1

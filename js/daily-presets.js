@@ -3,7 +3,7 @@ const PRESETS_URL = 'presets/daily-defaults.json';
 export const VALID_HOSTS = ['Adam', 'Dave', 'Jamey', 'Heath', 'Dan', 'Jacob'];
 
 export const DEFAULT_PRESET = {
-  hosts: ['Adam'],
+  hosts: ['Adam', 'Dave', 'Jamey', 'Heath'],
   mailbag: false,
   draft: false,
 };

@@ -13,7 +13,7 @@ Adam defends Daniel Jones,Adam,FALSE,Adam defends Daniel Jones
 Adam trashes the Chiefs,"Adam, Heath",FALSE,Adam trashes Chiefs
 Heath defends the Chiefs,"Adam, Heath",FALSE,Heath defends Chiefs
 Heath trashes the Chiefs,Heath,FALSE,Heath trashes Chiefs
-"Dan says ""standpoint""",Dan,TRUE,"Dan: ""standpoint"""
+"Dan says ""from a ____ standpoint""",Dan,TRUE,"Dan: ""from a ____ standpoint"""
 Adam gets razzed for his commissioning,,FALSE,Adam razzed re: commissioning
 Spiderman meme is mentioned,,TRUE,Spiderman meme
 "Dan says, ""I will say this""",Dan,TRUE,"Dan: ""I will say this"""
@@ -86,3 +86,4 @@ Treveyon Henderson is referred to as a bad value,preseason,FALSE,Henderson bad v
 Jamey gets pumped about the Chargers,"Jamey, preseason",FALSE,Jamey pumped on Chargers
 Jamey gets pumped about Ken Walker,"Jamey, preseason",FALSE,Jamey pumped on Walker
 Adam tries to wriggle out of the beard bet,Adam,FALSE,Adam tries to wriggle out of bet
+Dave interrupts Adam,"Dave, Adam",FALSE,Dave interrupts Adam
