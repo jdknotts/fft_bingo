@@ -52,8 +52,8 @@ FFT Dynasty Podcast plug,Heath,TRUE,FFT Dynasty plug
 Dan says he doesn't watch movies,Dan,FALSE,Dan doesn't watch movies
 "Jacob says, ""lets go""",Jacob,FALSE,"Jacob: ""lets go"""
 Jacob is silent for 2 straight minutes,Jacob,TRUE,Jacob silent 2 min
-"Dave says ""drop-o-meter"" like ""DROP-oh-mee-ter""",Monday,TRUE,"""DROP-oh-mee-ter"""
-"Dave says ""drop-o-meter"" like ""druh-POM-uh-ter""",Monday,TRUE,"""druh-POM-uh-ter"""
+"Dave says ""drop-o-meter"" like ""DROP-oh-mee-ter""","Monday, season",TRUE,"""DROP-oh-mee-ter"""
+"Dave says ""drop-o-meter"" like ""druh-POM-uh-ter""","Monday, season",TRUE,"""druh-POM-uh-ter"""
 Jamey curses,Jamey,FALSE,Jamey curses
 Dan hasn't seen a movie,Dan,FALSE,Dan hasn't seen a movie
 Dan says auctions are better than snake drafts,Dan,TRUE,Dan: auctions > snake
