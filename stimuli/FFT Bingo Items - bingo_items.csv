@@ -48,7 +48,7 @@ Game of the Week,"Adam, Dave, Thursday OR Friday, season",TRUE,Game of the Week
 PITT MAN music,,FALSE,PITT MAN music
 Adam and Dan get mad at each other,"Adam, Dan",FALSE,Adam/Dan mad at each other
 Beyond the Box Score Podcast plug,,TRUE,Beyond the Box Score
-FFT Dynasty Podcast plug,,TRUE,FFT Dynasty plug
+FFT Dynasty Podcast plug,Heath,TRUE,FFT Dynasty plug
 Dan says he doesn't watch movies,Dan,FALSE,Dan doesn't watch movies
 "Jacob says, ""lets go""",Jacob,FALSE,"Jacob: ""lets go"""
 Jacob is silent for 2 straight minutes,Jacob,TRUE,Jacob silent 2 min
@@ -87,3 +87,4 @@ Jamey gets pumped about the Chargers,"Jamey, preseason",FALSE,Jamey pumped on Ch
 Jamey gets pumped about Ken Walker,"Jamey, preseason",FALSE,Jamey pumped on Walker
 Adam tries to wriggle out of the beard bet,Adam,FALSE,Adam tries to wriggle out of bet
 Dave interrupts Adam,"Dave, Adam",FALSE,Dave interrupts Adam
+Adam interrupts Dave,"Dave, Adam",FALSE,Adam interrupts Dave
