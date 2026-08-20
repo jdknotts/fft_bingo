@@ -36,5 +36,13 @@
     ],
     "mailbag": false,
     "draft": false
+  },
+  "2026-08-20": {
+    "hosts": [
+      "Adam",
+      "Jamey"
+    ],
+    "mailbag": false,
+    "draft": false
   }
 }
