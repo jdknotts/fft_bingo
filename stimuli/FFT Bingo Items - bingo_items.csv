@@ -40,7 +40,7 @@ Adam struggles with a soundbite,Adam,FALSE,Adam struggles w/ soundbite
 Adam and Heath get mad at each other,"Adam, Heath",FALSE,Adam/Heath mad at each other
 Adam gets pumped about Jahmyr Gibbs,"Adam, preseason",FALSE,Adam pumped on Jahmyr Gibbs
 Dave advocates for using a handcuff strategy,Dave,FALSE,Dave: handcuff strategy
-"Any mention of the ""friendship strategy""",,FALSE,Friendship strategy
+"Any mention of the ""friendship strategy""",preseason,FALSE,Friendship strategy
 Any mention of best ball,,FALSE,Best ball
 Any mention of the green zone,,FALSE,Green zone
 Game of the Week,"Adam, Dave, Thursday OR Friday, season",TRUE,Game of the Week
@@ -79,7 +79,7 @@ A poll is consulted,,FALSE,poll
 "Someone is referred to as, ""the high guy""",,FALSE,"""the high guy"""
 "Someone is referred to as, ""the low guy""",,FALSE,"""the low guy"""
 "Someone says, ""late round flier""",preseason,FALSE,"""late round flier"""
-Parker Washington pre-season hype mentioned,,FALSE,Parker Washington hype
+Parker Washington pre-season hype mentioned,preseason,FALSE,Parker Washington hype
 Treveyon Henderson is referred to as a bad value,preseason,FALSE,Henderson bad value
 "Someone references, ""FOOLED YOU""",,FALSE,FOOLED YOU
 Jamey gets pumped about the Chargers,"Jamey, preseason",FALSE,Jamey pumped on Chargers
@@ -87,5 +87,7 @@ Jamey gets pumped about Ken Walker,"Jamey, preseason",FALSE,Jamey pumped on Walk
 Adam tries to wriggle out of the beard bet,Adam,FALSE,Adam tries to wriggle out of bet
 Dave interrupts Adam,"Dave, Adam",FALSE,Dave interrupts Adam
 Adam interrupts Dave,"Dave, Adam",FALSE,Adam interrupts Dave
-TUMSgate comes up,mailbag,FALSE,TUMSgate
+Dan's indigestion comes up,,FALSE,Dan indigestion
 Someone regrets their mock draft pick,draft,FALSE,Mock pick regret
+Dave repeats what someone else just said about a player,Dave,FALSE,Dave repeats what someone just said
+Omaha Steaks ad read,,TRUE,Omaha Steaks
