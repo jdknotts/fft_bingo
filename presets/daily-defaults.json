@@ -53,5 +53,14 @@
     ],
     "mailbag": true,
     "draft": false
+  },
+  "2026-09-10": {
+    "hosts": [
+      "Adam",
+      "Heath",
+      "Jamey"
+    ],
+    "mailbag": false,
+    "draft": false
   }
 }
